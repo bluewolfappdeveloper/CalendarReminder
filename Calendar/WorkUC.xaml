@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="Calendar.WorkUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calendar"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="870"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             Background="{DynamicResource MaterialDesignPaper}"
+             FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <materialDesign:Card Height="50">
+        <StackPanel Orientation="Horizontal">
+            <CheckBox x:Name="chkstatus" Margin="5 0 5 0" Checked="chkstatus_Checked" Unchecked="chkstatus_Unchecked"></CheckBox>
+            <TextBox x:Name="txtNameWork" 
+                     MinWidth="220" 
+                     HorizontalAlignment="Center" 
+                     VerticalAlignment="Center" 
+                     TextChanged="txtNameWork_TextChanged"                 
+                     materialDesign:HintAssist.Hint="Tên sự kiện" ></TextBox>
+            <TextBlock Text="Từ" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 0 0 0"></TextBlock>
+            <materialDesign:TimePicker 
+                x:Name="fromtime"
+                MinWidth="130"
+                materialDesign:HintAssist.Hint="Thời gian" 
+                Margin="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                TextBoxBase.TextChanged="time_TextChanged"
+                SelectedTime="00:00"/>
+            <TextBlock Text="Đến" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <materialDesign:TimePicker
+                x:Name="totime"
+                MinWidth="130"
+                materialDesign:HintAssist.Hint="Thời gian"
+                Margin="10"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                TextBoxBase.TextChanged="time2_TextChanged"
+                SelectedTime="00:00"/>
+            <ComboBox x:Name="Status"
+                      MinWidth="130" 
+                      IsEditable="False" 
+                      Margin="7 0 0 0" 
+                      HorizontalContentAlignment="Center" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Center" 
+                      SelectionChanged="Status_SelectionChanged"
+                       materialDesign:HintAssist.Hint="Trạng thái" >
+                
+                <ComboBoxItem HorizontalContentAlignment="Left">Done</ComboBoxItem>
+                <ComboBoxItem HorizontalContentAlignment="Left">Doing</ComboBoxItem>
+                <ComboBoxItem HorizontalContentAlignment="Left">Coming</ComboBoxItem>
+                <ComboBoxItem HorizontalContentAlignment="Left">Missed</ComboBoxItem>
+                
+            </ComboBox>
+            
+            <Button x:Name="btnEdit"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    Width="auto"
+                    ToolTip="Sửa"
+                    Margin="10 0 10 0" Click="btnEdit_Click"
+                    IsEnabled="False">
+                Sửa
+            </Button>
+            <Button x:Name="btnDel"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Width="auto"
+                    ToolTip="Xóa"
+                    Click="btnDel_Click">
+                Xóa
+            </Button>
+        </StackPanel>
+    </materialDesign:Card>
+
+</UserControl>
